@@ -8,7 +8,7 @@ module.exports = {
     // First application
     {
       name      : 'API',
-      script    : 'app.js',
+      script    : './bin/www',
       env: {
         COMMON_VARIABLE: 'true'
       },
@@ -38,11 +38,13 @@ module.exports = {
       'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production'
     },
     dev : {
-      user : 'node',
-      host : '71.236.63.224',
+      key  : '/d/ssh-keys/kunal_rsa',
+      user : 'root',
+      host : '174.138.61.69',
       ref  : 'origin/master',
-      repo : 'git@github.com:repo.git',
-      path : '/var/www/development',
+      repo : 'git@github.com:kunalpict/mservices.git',
+      'pre-setup' : 'rm -rf /var/www/source/',
+      path : ' /var/www/source/',
       'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env dev',
       env  : {
         NODE_ENV: 'dev'
